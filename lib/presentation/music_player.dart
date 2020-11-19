@@ -39,7 +39,7 @@ class MusicPlayer extends StatelessWidget {
                         child: Cover(track),
                       ),
                       SizedBox(
-                        height: height * 0.05,
+                        height: height * 0.07,
                       ),
                       TitleBox(),
                       SizedBox(
@@ -47,15 +47,15 @@ class MusicPlayer extends StatelessWidget {
                       ),
                       PlaytimeSlider(track),
                       SizedBox(
-                        height: height * 0.065,
+                        height: height * 0.045,
                       ),
                       Controls(),
                       SizedBox(
-                        height: height * 0.065,
+                        height: height * 0.055,
                       ),
                       Volumeslider(),
                       SizedBox(
-                        height: height * 0.065,
+                        height: height * 0.085,
                       ),
                       OptionsBox(),
                     ],

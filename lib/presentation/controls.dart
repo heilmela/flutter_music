@@ -1,4 +1,4 @@
-import 'package:flutter_music/presentation/button.dart';
+import 'package:flutter_music/presentation/buttons.dart/button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -13,7 +13,7 @@ class Controls extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Button(
+          GlyphButton.contract(
             baseSize: baseSize,
             asset: SvgPicture.asset(
               'assets/icons/play-back.svg',
@@ -26,8 +26,9 @@ class Controls extends StatelessWidget {
           SizedBox(
             width: baseSize,
           ),
-          Button(
-            baseSize: baseSize * 1.3,
+          GlyphButton.contract(
+            baseSize: baseSize * 1.2,
+            padding: 0.15,
             asset: SvgPicture.asset(
               'assets/icons/play.svg',
               color: Colors.white,
@@ -39,7 +40,7 @@ class Controls extends StatelessWidget {
           SizedBox(
             width: baseSize,
           ),
-          Button(
+          GlyphButton.contract(
             baseSize: baseSize,
             asset: SvgPicture.asset(
               'assets/icons/play-forward.svg',

@@ -1,5 +1,5 @@
-import 'package:flutter_music/presentation/button.dart';
-import 'package:flutter_music/presentation/icon_button.dart';
+import 'package:flutter_music/presentation/buttons.dart/button.dart';
+import 'package:flutter_music/presentation/buttons.dart/invert_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -15,7 +15,7 @@ class OptionsBox extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          IconSwitchButton(
+          InvertButton(
             size: baseSize,
             filled: CupertinoIcons.quote_bubble_fill,
             outline: CupertinoIcons.quote_bubble,
@@ -24,9 +24,9 @@ class OptionsBox extends StatelessWidget {
             },
           ),
           SizedBox(
-            width: baseSize,
+            width: baseSize * 2,
           ),
-          Button(
+          GlyphButton(
             baseSize: baseSize * 1.3,
             asset: SvgPicture.asset(
               'assets/icons/airplay.svg',
@@ -37,16 +37,14 @@ class OptionsBox extends StatelessWidget {
             },
           ),
           SizedBox(
-            width: baseSize,
+            width: baseSize * 2,
           ),
-          Button(
-            baseSize: baseSize,
-            asset: SvgPicture.asset(
-              'assets/icons/play-forward.svg',
-              color: Colors.white,
-            ),
+          InvertButton(
+            size: baseSize,
+            filled: CupertinoIcons.list_bullet,
+            outline: CupertinoIcons.list_bullet,
             onPressed: () {
-              print('Play');
+              print('Playlist');
             },
           ),
         ],

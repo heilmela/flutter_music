@@ -1,19 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
-class IconSwitchButton extends StatefulWidget {
+class InvertButton extends StatefulWidget {
   final IconData filled;
   final IconData outline;
   final Function onPressed;
   final double size;
-  IconSwitchButton({this.filled, this.outline, this.size, this.onPressed});
+  double sizeAdjust;
+  InvertButton(
+      {this.filled,
+      this.outline,
+      this.size,
+      this.onPressed,
+      this.sizeAdjust = 0.18});
 
   @override
-  _IconSwitchButtonState createState() => _IconSwitchButtonState();
+  _InvertButtonState createState() => _InvertButtonState();
 }
 
-class _IconSwitchButtonState extends State<IconSwitchButton> {
+class _InvertButtonState extends State<InvertButton> {
   bool active;
   @override
   void initState() {
@@ -26,7 +31,7 @@ class _IconSwitchButtonState extends State<IconSwitchButton> {
   Widget iconBuilder() {
     if (active) {
       return ClipRRect(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(5),
         child: ShaderMask(
           blendMode: BlendMode.srcOut,
           shaderCallback: (bounds) => LinearGradient(
@@ -34,8 +39,8 @@ class _IconSwitchButtonState extends State<IconSwitchButton> {
               tileMode: TileMode.mirror,
               stops: [0.0]).createShader(bounds),
           child: Container(
-            width: this.widget.size * 1.5,
-            height: this.widget.size * 1.5,
+            width: this.widget.size * 1.3,
+            height: this.widget.size * 1.3,
             alignment: Alignment.center,
             color: Colors.transparent,
             child: Icon(
@@ -47,10 +52,13 @@ class _IconSwitchButtonState extends State<IconSwitchButton> {
       );
     } else {
       return Container(
-        padding: EdgeInsets.all(2),
-        child: Icon(
-          this.widget.outline,
-          size: this.widget.size,
+        width: this.widget.size * 1.3,
+        height: this.widget.size * 1.3,
+        child: Center(
+          child: Icon(
+            this.widget.outline,
+            size: this.widget.size * (1 + this.widget.sizeAdjust),
+          ),
         ),
       );
     }

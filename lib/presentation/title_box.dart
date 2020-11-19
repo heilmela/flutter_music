@@ -1,4 +1,4 @@
-import 'package:flutter_music/presentation/button.dart';
+import 'package:flutter_music/presentation/buttons.dart/button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' show Colors;
 import 'package:flutter_svg/svg.dart';
@@ -28,7 +28,7 @@ class TitleBox extends StatelessWidget {
                   style: CupertinoTheme.of(context).textTheme.textStyle),
             ],
           ),
-          Button(
+          GlyphButton(
             baseSize: 24 * fontScale,
             asset: SvgPicture.asset(
               'assets/icons/ellipsis-horizontal.svg',
@@ -37,7 +37,7 @@ class TitleBox extends StatelessWidget {
             onPressed: () {
               print('Settings');
             },
-            fillColor: Colors.white10,
+            backgroundColor: Colors.white10,
           )
         ],
       ),
