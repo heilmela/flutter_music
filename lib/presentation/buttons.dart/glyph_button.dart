@@ -26,7 +26,7 @@ class GlyphButton extends StatefulWidget {
     this.backgroundColor = Colors.transparent,
     this.baseSize = 30,
     this.padding = 0.25,
-    this.contractStrength = 0.1,
+    this.contractStrength = 0.15,
   })  : assert(contractStrength < 1),
         assert(0 < contractStrength),
         assert(padding < 1),
@@ -85,6 +85,7 @@ class _GlyphButtonState extends State<GlyphButton> {
   }
 
   void release() {
+    this.widget.onPressed();
     setState(() {
       this.releaseEffects.forEach((releaseEffect) => releaseEffect());
     });

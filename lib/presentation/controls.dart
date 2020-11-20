@@ -1,9 +1,43 @@
-import 'package:flutter_music/presentation/buttons.dart/button.dart';
+import 'package:flutter_music/presentation/buttons.dart/glyph_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Controls extends StatelessWidget {
+  final Function play;
+  final bool playing;
+  Controls(this.play, this.playing);
+
+  GlyphButton playButtonBuilder(double baseSize) {
+    if (!playing) {
+      return GlyphButton.contract(
+        baseSize: baseSize * 1.35,
+        padding: 0.1,
+        asset: SvgPicture.asset(
+          'assets/icons/play.svg',
+          color: Colors.white,
+        ),
+        onPressed: () {
+          play();
+          print('Play');
+        },
+      );
+    } else {
+      return GlyphButton.contract(
+        baseSize: baseSize * 1.35,
+        padding: 0.1,
+        asset: SvgPicture.asset(
+          'assets/icons/pause.svg',
+          color: Colors.white,
+        ),
+        onPressed: () {
+          play();
+          print('Play');
+        },
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final fontScale = MediaQuery.textScaleFactorOf(context);
@@ -20,23 +54,13 @@ class Controls extends StatelessWidget {
               color: Colors.white,
             ),
             onPressed: () {
-              print('Play');
+              print('Play back!');
             },
           ),
           SizedBox(
             width: baseSize,
           ),
-          GlyphButton.contract(
-            baseSize: baseSize * 1.2,
-            padding: 0.15,
-            asset: SvgPicture.asset(
-              'assets/icons/play.svg',
-              color: Colors.white,
-            ),
-            onPressed: () {
-              print('Play');
-            },
-          ),
+          playButtonBuilder(baseSize),
           SizedBox(
             width: baseSize,
           ),

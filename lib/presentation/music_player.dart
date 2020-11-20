@@ -8,14 +8,28 @@ import 'package:flutter_music/presentation/title_box.dart';
 import 'package:flutter_music/presentation/volume_slider.dart';
 import 'package:flutter/material.dart';
 
-class MusicPlayer extends StatelessWidget {
-  Track track;
+class MusicPlayer extends StatefulWidget {
+  final Track track;
   MusicPlayer(this.track);
+
+  @override
+  _MusicPlayerState createState() => _MusicPlayerState();
+}
+
+class _MusicPlayerState extends State<MusicPlayer> {
+  bool playing = false;
+
+  void play() {
+    setState(() {
+      playing = !playing;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: Stack(
         children: [
@@ -23,44 +37,46 @@ class MusicPlayer extends StatelessWidget {
           Positioned(
             top: 0,
             left: 0,
-            child: SafeArea(
-              child: LimitedBox(
-                maxWidth: width,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: width * 0.11),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      SizedBox(
-                        height: height * 0.05,
-                      ),
-                      LimitedBox(
-                        maxHeight: height * 0.35,
-                        child: Cover(track),
-                      ),
-                      SizedBox(
-                        height: height * 0.07,
-                      ),
-                      TitleBox(),
-                      SizedBox(
-                        height: height * 0.01,
-                      ),
-                      PlaytimeSlider(track),
-                      SizedBox(
-                        height: height * 0.045,
-                      ),
-                      Controls(),
-                      SizedBox(
-                        height: height * 0.055,
-                      ),
-                      Volumeslider(),
-                      SizedBox(
-                        height: height * 0.085,
-                      ),
-                      OptionsBox(),
-                    ],
+            width: width,
+            height: height,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: width * 0.04),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: height * 0.08,
                   ),
-                ),
+                  Container(
+                    width: width,
+                    height: height * 0.4,
+                    alignment: Alignment.center,
+                    child: Cover(
+                      widget.track,
+                      playing,
+                    ),
+                  ),
+                  SizedBox(
+                    height: height * 0.05,
+                  ),
+                  TitleBox(),
+                  SizedBox(
+                    height: height * 0.01,
+                  ),
+                  PlaytimeSlider(widget.track),
+                  SizedBox(
+                    height: height * 0.045,
+                  ),
+                  Controls(play, playing),
+                  SizedBox(
+                    height: height * 0.055,
+                  ),
+                  Volumeslider(),
+                  SizedBox(
+                    height: height * 0.055,
+                  ),
+                  OptionsBox(),
+                ],
               ),
             ),
           ),

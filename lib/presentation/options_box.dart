@@ -1,4 +1,4 @@
-import 'package:flutter_music/presentation/buttons.dart/button.dart';
+import 'package:flutter_music/presentation/buttons.dart/glyph_button.dart';
 import 'package:flutter_music/presentation/buttons.dart/invert_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +24,7 @@ class OptionsBox extends StatelessWidget {
             },
           ),
           SizedBox(
-            width: baseSize * 2,
+            width: baseSize * 4,
           ),
           GlyphButton(
             baseSize: baseSize * 1.3,
@@ -37,7 +37,7 @@ class OptionsBox extends StatelessWidget {
             },
           ),
           SizedBox(
-            width: baseSize * 2,
+            width: baseSize * 4,
           ),
           InvertButton(
             size: baseSize,
